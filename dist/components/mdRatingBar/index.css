@@ -1,0 +1,29 @@
+/* Common */
+/* Responsive Breakpoints */
+/* Transitions - Based on Angular Material */
+/* Elevation - Based on Angular Material */
+.md-rating-bar {
+  width: auto;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.md-rating-bar > .front-stars {
+    overflow-x: hidden;
+    display: inherit;
+}
+.md-rating-bar > .back-stars > .md-icon, .md-rating-bar > .front-stars > .md-icon {
+    margin: 0;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.md-rating-bar:not([disabled]):hover {
+    background-color: rgba(153, 153, 153, 0.2);
+}
+.md-rating-bar[disabled] > .back-stars > .md-icon, .md-rating-bar[disabled] > .front-stars > .md-icon {
+    cursor: default;
+}
+
+/*# sourceMappingURL=index.css.map*/
