@@ -6,13 +6,16 @@ $button-radius: 2px;
   width: auto;
   display: flex;
   width: fit-content;
+  padding: 3px;
+  border-radius: 2px;
 
-  > .front-stars {
+  > .md-front-stars {
     overflow-x: hidden;
     display: inherit;
   }
 
-  > .back-stars, > .front-stars {
+  > .md-back-stars,
+  > .md-front-stars {
     > .md-icon {
       margin: 0;
       white-space: nowrap;
@@ -27,7 +30,7 @@ $button-radius: 2px;
   }
 
   &[disabled] {
-    > .back-stars, > .front-stars {
+    > .md-back-stars, > .md-front-stars {
        > .md-icon {
         cursor: default;
       }
