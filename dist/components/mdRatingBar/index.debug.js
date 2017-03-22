@@ -234,7 +234,7 @@ var iconSize = 24; //size of each icon from rating bar in pixels
 
 exports.default = {
   props: {
-    numStars: {
+    mdNumStars: {
       type: Number,
       default: 5
     },
@@ -246,11 +246,11 @@ exports.default = {
       },
       default: 0
     },
-    frontIcon: {
+    mdFrontIcon: {
       type: String,
       default: 'star'
     },
-    backIcon: {
+    mdBackIcon: {
       type: String,
       default: 'star'
     }
@@ -258,17 +258,15 @@ exports.default = {
   mixins: [_mixin2.default],
   data: function data() {
     return {
-      rating: NaN
+      rating: this.value
     };
   },
-  mounted: function mounted() {
-    this.rating = this.value;
-  },
+
   computed: {
     frontStarsStyle: function frontStarsStyle() {
       return {
         width: 100 * this.rating + '%',
-        'margin-left': -iconSize * this.numStars + 'px'
+        'margin-left': -iconSize * this.mdNumStars + 'px'
       };
     }
   },
@@ -280,32 +278,30 @@ exports.default = {
   methods: {
     hoverStars: function hoverStars(evt) {
       if (!this.disabled) {
-        var selected = this.getIconIndex(evt.target);
-
-        this.rating = selected / this.numStars;
+        this.rating = this.getIconIndex(evt.target) / this.mdNumStars;
       }
     },
     clickStars: function clickStars(evt) {
       if (!this.disabled) {
         var selected = this.getIconIndex(evt.target);
 
-        this.$emit('input', selected / this.numStars);
-        this.$emit('change', selected / this.numStars);
+        this.$emit('input', selected / this.mdNumStars);
+        this.$emit('change', selected / this.mdNumStars);
       }
     },
     getIconIndex: function getIconIndex(iconSelected) {
       var _this = this;
 
-      //icon is a dom element
-      var ratingIcons = this.$el.querySelectorAll('.back-stars > .md-icon, .front-stars > .md-icon');
+      //iconSelected is a dom element
+      var ratingIcons = this.$el.querySelectorAll('.md-back-stars > .md-icon, .md-front-stars > .md-icon');
       var selected = -1;
 
       ratingIcons = Array.prototype.slice.call(ratingIcons);
+      //find index from iconSelected
       ratingIcons.some((function (icon, i) {
-        //find index
         if (icon === iconSelected) {
-          selected = (i + 1) % _this.numStars;
-          selected = !selected ? _this.numStars : selected;
+          selected = (i + 1) % _this.mdNumStars;
+          selected = !selected ? _this.mdNumStars : selected;
           return true;
         }
       }));
@@ -331,7 +327,7 @@ module.exports = exports['default'];
 /***/ 252:
 /***/ (function(module, exports) {
 
-module.exports = ".THEME_NAME.md-rating-bar > .back-stars .md-icon {\n  color: BACKGROUND-CONTRAST-0.3; }\n\n.THEME_NAME.md-rating-bar > .front-stars .md-icon {\n  color: BACKGROUND-CONTRAST-0.4; }\n\n.THEME_NAME.md-rating-bar.md-primary > .front-stars .md-icon {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-rating-bar.md-accent > .front-stars .md-icon {\n  color: ACCENT-COLOR; }\n\n.THEME_NAME.md-rating-bar.md-warn > .front-stars .md-icon {\n  color: WARN-COLOR; }\n"
+module.exports = ".THEME_NAME.md-rating-bar > .md-back-stars .md-icon {\n  color: BACKGROUND-CONTRAST-0.26; }\n\n.THEME_NAME.md-rating-bar > .md-front-stars .md-icon {\n  color: BACKGROUND-CONTRAST-0.38; }\n\n.THEME_NAME.md-rating-bar.md-primary > .md-front-stars .md-icon {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-rating-bar.md-accent > .md-front-stars .md-icon {\n  color: ACCENT-COLOR; }\n\n.THEME_NAME.md-rating-bar.md-warn > .md-front-stars .md-icon {\n  color: WARN-COLOR; }\n"
 
 /***/ }),
 
@@ -385,13 +381,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": _vm.disabled
     }
   }, [_c('div', {
-    staticClass: "back-stars",
+    staticClass: "md-back-stars",
     attrs: {
       "disabled": _vm.disabled
     }
-  }, _vm._l((_vm.numStars), (function(i) {
+  }, _vm._l((_vm.mdNumStars), (function(i) {
     return _c('md-icon', {
-      key: i,
       nativeOn: {
         "mouseover": function($event) {
           _vm.hoverStars($event)
@@ -403,11 +398,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.onMouseOut($event)
         }
       }
-    }, [_vm._v(_vm._s(_vm.backIcon))])
+    }, [_vm._v(_vm._s(_vm.mdBackIcon))])
   }))), _vm._v(" "), _c('div', {
-    staticClass: "front-stars",
+    staticClass: "md-front-stars",
     style: (_vm.frontStarsStyle)
-  }, _vm._l((_vm.numStars), (function(i) {
+  }, _vm._l((_vm.mdNumStars), (function(i) {
     return _c('md-icon', {
       nativeOn: {
         "mouseover": function($event) {
@@ -420,7 +415,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.onMouseOut($event)
         }
       }
-    }, [_vm._v(_vm._s(_vm.frontIcon))])
+    }, [_vm._v(_vm._s(_vm.mdFrontIcon))])
   })))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true

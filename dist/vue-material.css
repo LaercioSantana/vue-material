@@ -4204,12 +4204,15 @@ img.md-icon {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  padding: 3px;
+  border-radius: 2px;
 }
-.md-rating-bar > .front-stars {
+.md-rating-bar > .md-front-stars {
     overflow-x: hidden;
     display: inherit;
 }
-.md-rating-bar > .back-stars > .md-icon, .md-rating-bar > .front-stars > .md-icon {
+.md-rating-bar > .md-back-stars > .md-icon,
+  .md-rating-bar > .md-front-stars > .md-icon {
     margin: 0;
     white-space: nowrap;
     cursor: pointer;
@@ -4217,7 +4220,7 @@ img.md-icon {
 .md-rating-bar:not([disabled]):hover {
     background-color: rgba(153, 153, 153, 0.2);
 }
-.md-rating-bar[disabled] > .back-stars > .md-icon, .md-rating-bar[disabled] > .front-stars > .md-icon {
+.md-rating-bar[disabled] > .md-back-stars > .md-icon, .md-rating-bar[disabled] > .md-front-stars > .md-icon {
     cursor: default;
 }
 /* Common */
